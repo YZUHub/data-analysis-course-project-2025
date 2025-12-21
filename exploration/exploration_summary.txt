@@ -1,0 +1,112 @@
+================================================================================
+DATA EXPLORATION SUMMARY REPORT
+Human Activity Recognition Dataset
+================================================================================
+
+DATASET OVERVIEW
+--------------------------------------------------------------------------------
+Total Samples: 2,872,533
+Number of Subjects: 9
+Number of Activities: 13 (including transient)
+Number of Features: 56
+Sampling Rate: 100 Hz
+Total Duration: 1.24 hours
+
+ACTIVITY STATISTICS
+--------------------------------------------------------------------------------
+                   samples  num_subjects  duration_seconds  percentage
+activity_label                                                        
+Ascending Stairs    117216             8           1172.16    6.033130
+Cycling             164600             7           1646.00    8.471994
+Descending Stairs   104944             8           1049.44    5.401488
+Ironing             238690             8           2386.90   12.285421
+Lying               192523             8           1925.23    9.909196
+Nordic Walking      188107             7           1881.07    9.681904
+Rope Jumping         49360             6            493.60    2.540569
+Running              98199             7            981.99    5.054322
+Sitting             185188             8           1851.88    9.531662
+Standing            189931             8           1899.31    9.775786
+Vacuum Cleaning     175353             8           1753.53    9.025453
+Walking             238761             8           2387.61   12.289075
+
+SUBJECT STATISTICS
+--------------------------------------------------------------------------------
+            total_samples  labeled_samples  transient_samples  labeled_percentage
+subject_id                                                                       
+101                376417           249957             126460           66.404280
+102                447000           263349             183651           58.914765
+103                252833           174338              78495           68.953815
+104                329576           231421              98155           70.217795
+105                374783           272442             102341           72.693265
+106                361817           250096             111721           69.122236
+107                313599           232776              80823           74.227278
+108                408031           262102             145929           64.235806
+109                  8477             6391               2086           75.392238
+
+MISSING DATA ANALYSIS
+--------------------------------------------------------------------------------
+Total missing values: 3,093,966
+Percentage of missing data: 1.92%
+Columns with missing data: 52
+
+Top 20 columns with most missing data:
+  heart_rate                    :  90.87%
+  hand_temp                     :   0.46%
+  hand_acc16_y                  :   0.46%
+  hand_acc16_x                  :   0.46%
+  hand_acc16_z                  :   0.46%
+  hand_acc6_x                   :   0.46%
+  hand_acc6_z                   :   0.46%
+  hand_acc6_y                   :   0.46%
+  hand_orient_1                 :   0.46%
+  hand_orient_2                 :   0.46%
+  hand_gyro_x                   :   0.46%
+  hand_gyro_y                   :   0.46%
+  hand_gyro_z                   :   0.46%
+  hand_mag_x                    :   0.46%
+  hand_mag_y                    :   0.46%
+  hand_mag_z                    :   0.46%
+  hand_orient_3                 :   0.46%
+  hand_orient_4                 :   0.46%
+  ankle_orient_1                :   0.41%
+  ankle_orient_2                :   0.41%
+
+SENSOR STATISTICS
+--------------------------------------------------------------------------------
+          heart_rate  hand_acc16_x  chest_acc16_y  ankle_acc16_z
+count  262268.000000  2.859392e+06   2.868970e+06   2.860784e+06
+mean      109.872508 -4.960786e+00   8.512205e+00  -2.461503e+00
+std        25.870036  5.985029e+00   4.234937e+00   3.556998e+00
+min        57.000000 -1.453670e+02  -4.692460e+01  -1.589260e+02
+25%        90.000000 -9.028420e+00   7.298863e+00  -3.648502e+00
+50%       108.000000 -5.788145e+00   9.391290e+00  -2.357230e+00
+75%       125.000000 -7.829420e-01   9.801490e+00  -1.060520e+00
+max       202.000000  6.285960e+01   1.535820e+02   1.605160e+02
+
+RECOMMENDATIONS FOR MODELING
+--------------------------------------------------------------------------------
+1. Handle missing data:
+   - Heart rate: Forward fill (HR sampled at ~9Hz)
+   - IMU sensors: Interpolation or forward fill
+   - Consider removing features with >50% missing data
+
+2. Address class imbalance:
+   - Use class weights in model training
+   - Consider oversampling minority classes
+   - Use stratified sampling for train/test split
+
+3. Feature engineering:
+   - Extract statistical features from windows
+   - Compute magnitude from 3D sensors
+   - Consider frequency domain features (FFT)
+   - Use subject demographics as additional features
+
+4. Model selection:
+   - Start with Random Forest for baseline
+   - Try XGBoost for better performance
+   - Consider LSTM/CNN for temporal patterns
+   - Use subject-based cross-validation
+
+================================================================================
+END OF REPORT
+================================================================================
