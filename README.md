@@ -1,32 +1,64 @@
-# data-analysis-course-project-2025
-Data analysis course project for the class of 2022
+# Human Activity Recognition Using Ensemble and Deep Learning Methods
 
-### Instructions to start the project
+**Author:** Md Talat Mahmud Tomal  
+**Student ID:** 228801146
 
-Run the following command in your terminal:
+## Overview
+This repository contains a course project report and implementation for **Human Activity Recognition (HAR)** using wearable sensor data (IMUs + heart rate). The work compares:
 
+- **Tabular / engineered-feature models:** Random Forest, CatBoost
+- **Sequential deep learning model:** Bidirectional LSTM (BiLSTM) over sliding windows
+
+The main deliverable is the notebook [main.ipynb](main.ipynb).
+
+## Dataset
+The dataset description and column layout are documented in [data/README.md](data/README.md). In short:
+
+- 9 subjects (IDs 101–109)
+- 18 activity classes (excluding transient/unlabeled activity ID = 0)
+- 54 sensor columns per timestep (timestamp, activity_id, heart_rate, and 3 IMUs: hand/chest/ankle)
+
+### Data files
+The notebook expects per-subject data files named like:
+
+- `data/subject101.dat`
+- `data/subject102.dat`
+- ...
+
+If your data is stored elsewhere, update the `DATA_DIR` variable inside [main.ipynb](main.ipynb).
+
+> Note: In the current notebook, `DATA_DIR` is set to a Kaggle path. For local execution, point it to your local `data/` folder.
+
+## Project structure
+- [main.ipynb](main.ipynb): Full report + code (EDA → preprocessing → modeling → evaluation)
+- [data/README.md](data/README.md): Dataset documentation
+- `data/subject*.dat`: Raw data files (not included here unless you add them)
+
+## Setup
+### 1) Create an environment (recommended)
 ```bash
-python -m venv venv
-source venv/Scripts/activate
+python -m venv .venv
+```
+
+Windows PowerShell:
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 2) Install dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-To start working on the project, follow these steps:
+## Running the notebook
+1. Open [main.ipynb](main.ipynb) in VS Code (Jupyter) or JupyterLab.
+2. Set `DATA_DIR` to the folder containing the `subject*.dat` files.
+3. Run all cells.
 
-```bash
-git checkout main
-git pull
-git checkout -b "studentID_your_real_name"
-```
+## Notes on evaluation protocol
+The notebook uses **stratified random splitting** to preserve class proportions and class coverage across train/validation/test.
 
-From here, you can start working on your project. Make sure to commit and push your changes regularly like this:
+- This is useful for balanced evaluation across classes.
+- It can be **optimistic** if your goal is strict generalization to unseen subjects (because subjects/time points may be mixed across splits).
 
-```bash
-git add .
-git commit -m "Descriptive message about what you changed"
-git push --set-upstream origin studentID_your_real_name
-```
-
-The project will be evaluated based on the quality of your code, analysis, and report. Good luck! I will share the data via WeChat group and then provide write access to the repository. On the deadline, I will revoke your write access and your last commit on your branch will be considered as your final submission.
-
-Please see the `data/README.md` file for details about the dataset. You should place the data files in the `data/` folder as well. You can submit your code as python files or Jupyter notebooks. The final report should be named as `report_<studentID>.pdf` and placed in the root folder.
+If required by your course rubric, consider re-running with a strict **subject-wise split**.
