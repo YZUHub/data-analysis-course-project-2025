@@ -1,32 +1,100 @@
-# data-analysis-course-project-2025
-Data analysis course project for the class of 2022
+# Human Activity Recognition Using LightGBM and Hybrid CNN Features
 
-### Instructions to start the project
+## 📌 Project Overview
+This project implements a **subject-independent Human Activity Recognition (HAR)** system using wearable sensor data. The objective is to classify daily human activities from physiological and motion sensor time-series signals while preventing data leakage and ensuring strong generalization to unseen subjects.
 
-Run the following command in your terminal:
+Two modeling strategies are explored:
+- A **baseline LightGBM model** using engineered statistical features
+- A **hybrid CNN → LightGBM model** that combines deep feature learning with gradient boosting
 
+This work was completed as part of a **Data Analysis Course Project (2025)**.
+
+---
+
+## 👤 Author Information
+- **Name:** Biswas Sougato (李安)  
+- **Student ID:** 228801152  
+- **Course:** Data Analysis  
+- **Year:** 2025  
+
+---
+
+## 📂 Repository Structure
+
+
+
+
+---
+
+## 📊 Dataset Description
+- **Subjects:** 9 participants  
+- **Sensors:**  
+  - Inertial Measurement Units (IMUs) on **hand, chest, and ankle**
+  - **Heart rate** sensor  
+- **Signals:** Accelerometer, gyroscope, magnetometer  
+- **Sampling rate:** ~100 Hz  
+- **Activities:** 18 daily activities (static and dynamic)  
+- **Note:** Transitional activities (activity ID = 0) are removed  
+- **Challenge:** Class imbalance and subject dependency  
+
+The dataset is well suited for **subject-independent human activity recognition**.
+
+---
+
+## ⚙️ Methodology
+
+### 1️⃣ Data Preprocessing
+- Removal of transient activity samples  
+- Handling of missing values  
+- Multi-class label encoding  
+- **Subject-wise train / validation / test split** to prevent data leakage  
+
+### 2️⃣ Windowing & Feature Engineering
+- Sliding window segmentation with fixed window and step size  
+- Majority voting for window labels  
+- Statistical time-domain feature extraction  
+- Feature normalization (fit on training data only)  
+
+### 3️⃣ Baseline Model (LightGBM)
+- Gradient boosting decision tree classifier  
+- Trained on engineered statistical features  
+- Class weighting used to address imbalance  
+- Efficient and interpretable baseline model  
+
+### 4️⃣ Deep Feature Learning (CNN)
+- 1D Convolutional Neural Network used as a **feature extractor**
+- Learns temporal and cross-channel representations
+- CNN is not used as a standalone classifier  
+
+### 5️⃣ Hybrid Model (CNN → LightGBM)
+- CNN-extracted features fused with statistical features  
+- LightGBM used as the final classifier  
+- Combines deep representation learning with robust gradient boosting  
+
+---
+
+## 📈 Evaluation Metrics
+- Accuracy  
+- Macro F1-score  
+- Confusion Matrix  
+- Per-class F1-score analysis  
+- Comparative visualizations (bar charts and radar charts)
+
+Evaluation is performed **only on unseen test subjects**.
+
+---
+
+## 🧪 Experimental Results (Summary)
+- The baseline LightGBM model demonstrates strong performance using engineered features.
+- The hybrid CNN → LightGBM model further improves robustness by leveraging learned temporal representations.
+- Subject-wise evaluation confirms strong generalization across unseen individuals.
+
+Detailed results and figures are provided in the **project report**.
+
+---
+
+## 🛠️ Installation & Requirements
+
+### Install dependencies
 ```bash
-python -m venv venv
-source venv/Scripts/activate
 pip install -r requirements.txt
-```
-
-To start working on the project, follow these steps:
-
-```bash
-git checkout main
-git pull
-git checkout -b "studentID_your_real_name"
-```
-
-From here, you can start working on your project. Make sure to commit and push your changes regularly like this:
-
-```bash
-git add .
-git commit -m "Descriptive message about what you changed"
-git push --set-upstream origin studentID_your_real_name
-```
-
-The project will be evaluated based on the quality of your code, analysis, and report. Good luck! I will share the data via WeChat group and then provide write access to the repository. On the deadline, I will revoke your write access and your last commit on your branch will be considered as your final submission.
-
-Please see the `data/README.md` file for details about the dataset. You should place the data files in the `data/` folder as well. You can submit your code as python files or Jupyter notebooks. The final report should be named as `report_<studentID>.pdf` and placed in the root folder.
