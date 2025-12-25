@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-12-25T16:44:16.457635",
+  "model_type": "RandomForest",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 20,
+    "class_weight": "balanced"
+  },
+  "metrics": {
+    "train_accuracy": 0.9998816508022385,
+    "train_f1": 0.9998816503424531,
+    "validation_accuracy": 0.999732868953624,
+    "validation_f1": 0.9997328714123598,
+    "test_accuracy": 0.762900234167821,
+    "test_f1": 0.7549766096141493,
+    "final_score": 0.5759718322658621
+  },
+  "data_info": {
+    "n_train_samples": 1182940,
+    "n_val_samples": 295735,
+    "n_test_samples": 464197,
+    "n_features": 57,
+    "n_classes": 12
+  }
+}
