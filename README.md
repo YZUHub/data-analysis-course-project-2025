@@ -1,5 +1,13 @@
 # Human Activity Recognition Using LightGBM and Hybrid CNN Features
 
+## 👤 Author Information
+- **Name:** Biswas Sougato (李安)  
+- **Student ID:** 228801152  
+- **Course:** Data Analysis  
+- **Year:** 2025  
+
+---
+
 ## 📌 Project Overview
 This project implements a **subject-independent Human Activity Recognition (HAR)** system using wearable sensor data. The objective is to classify daily human activities from physiological and motion sensor time-series signals while preventing data leakage and ensuring strong generalization to unseen subjects.
 
@@ -11,17 +19,7 @@ This work was completed as part of a **Data Analysis Course Project (2025)**.
 
 ---
 
-## 👤 Author Information
-- **Name:** Biswas Sougato (李安)  
-- **Student ID:** 228801152  
-- **Course:** Data Analysis  
-- **Year:** 2025  
-
----
-
 ## 📂 Repository Structure
-
-
 
 
 ---
@@ -92,6 +90,15 @@ Evaluation is performed **only on unseen test subjects**.
 Detailed results and figures are provided in the **project report**.
 
 ---
+
+## 🛠️ Installation & Requirements
+
+### Install dependencies
+```bash
+pip install -r requirements.txt
+
+
+
 
 ## 🛠️ Installation & Requirements
 
