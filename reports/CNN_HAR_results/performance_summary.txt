@@ -1,0 +1,35 @@
+============================================================
+CNN HAR MODEL - PERFORMANCE SUMMARY
+============================================================
+
+Overall Accuracy: 95.0%
+Test Loss: 0.2677
+
+Training Statistics:
+  Final Training Accuracy: 92.6%
+  Final Validation Accuracy: 94.1%
+  Epochs Trained: 120
+
+Top 5 Performing Classes:
+  1. Class 6: 99.6%
+  2. Class 11: 98.6%
+  3. Class 5: 98.2%
+  4. Class 4: 96.9%
+  5. Class 2: 96.8%
+
+Performance Statistics:
+  Highest Accuracy: 99.6%
+  Lowest Accuracy: 87.2%
+  Average Accuracy: 95.0%
+  Std Deviation: 3.4%
+  Classes above 80%: 12/12
+  Classes below 70%: 0/12
+
+Improvement from Baseline (58%): +63.8%
+
+Files Generated:
+  training_history.png
+  confusion_matrix.png
+  per_class_accuracy.png
+  class_distribution.png
+  performance_summary.txt

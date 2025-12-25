@@ -1,0 +1,3 @@
+Model,Accuracy,Loss,Parameters,Accuracy_Percentage
+CNN,0.9626950621604919,0.2293092906475067,162764,96.3%
+LSTM,0.802,0.512,80204,80.2%

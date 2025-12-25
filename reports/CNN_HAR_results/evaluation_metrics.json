@@ -1,0 +1,11 @@
+{
+    "model_name": "CNN_HAR",
+    "test_accuracy": 0.5780357718467712,
+    "test_loss": 1.5560721158981323,
+    "training_accuracy": 0.8842865228652954,
+    "training_loss": 0.45001494884490967,
+    "val_accuracy": 0.8278862237930298,
+    "val_loss": 0.5172361731529236,
+    "num_epochs": 30,
+    "timestamp": "2025-12-24T05:53:12.768587"
+}

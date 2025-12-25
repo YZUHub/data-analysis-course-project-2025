@@ -1,0 +1,9 @@
+Metric,Value
+Overall Accuracy,84.7%
+Weighted Precision,83.2%
+Weighted Recall,82.7%
+Weighted F1-Score,82.9%
+Training Accuracy,95.2%
+Validation Accuracy,94.1%
+Test Loss,2.7189
+Model Parameters,"80,204"
